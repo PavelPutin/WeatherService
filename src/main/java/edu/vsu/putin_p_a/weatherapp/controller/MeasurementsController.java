@@ -1,6 +1,7 @@
 package edu.vsu.putin_p_a.weatherapp.controller;
 
 import edu.vsu.putin_p_a.weatherapp.dto.MeasurementDTO;
+import edu.vsu.putin_p_a.weatherapp.dto.RainyDaysDTO;
 import edu.vsu.putin_p_a.weatherapp.model.Measurement;
 import edu.vsu.putin_p_a.weatherapp.servise.MeasurementsService;
 import edu.vsu.putin_p_a.weatherapp.util.*;
@@ -35,6 +36,11 @@ public class MeasurementsController {
         }
 
         measurementsService.add(convertToMeasurement(measurementDTO));
+    }
+
+    @GetMapping("/rainyDaysCount")
+    public RainyDaysDTO rainyDaysCount() {
+        return new RainyDaysDTO(measurementsService.rainyDaysCount());
     }
 
     @ExceptionHandler
