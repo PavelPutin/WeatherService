@@ -1,4 +1,4 @@
-package edu.vsu.putin_p_a.sprintrestservice;
+package edu.vsu.putin_p_a.weatherapp;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
