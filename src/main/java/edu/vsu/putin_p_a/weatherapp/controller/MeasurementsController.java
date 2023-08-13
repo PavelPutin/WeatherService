@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/measurements")
@@ -38,6 +39,11 @@ public class MeasurementsController {
         measurementsService.add(convertToMeasurement(measurementDTO));
     }
 
+    @GetMapping
+    public List<MeasurementDTO> getAll() {
+        return measurementsService.getAll().stream().map(this::convertToMeasurementDTO).toList();
+    }
+
     @GetMapping("/rainyDaysCount")
     public RainyDaysDTO rainyDaysCount() {
         return new RainyDaysDTO(measurementsService.rainyDaysCount());
@@ -50,5 +56,9 @@ public class MeasurementsController {
 
     private Measurement convertToMeasurement(MeasurementDTO measurementDTO) {
         return modelMapper.map(measurementDTO, Measurement.class);
+    }
+
+    private MeasurementDTO convertToMeasurementDTO(Measurement measurement) {
+        return modelMapper.map(measurement, MeasurementDTO.class);
     }
 }
