@@ -5,13 +5,9 @@ import org.springframework.validation.FieldError;
 
 import java.util.List;
 
-public class SensorValidationException extends RuntimeException {
-    private final BindingResult bindingResult;
-    public SensorValidationException(BindingResult bindingResult) {
-        this.bindingResult = bindingResult;
-    }
+public class SensorValidationException extends ValidationException {
 
-    public List<FieldError> getErrors() {
-        return bindingResult.getFieldErrors();
+    public SensorValidationException(BindingResult bindingResult) {
+        super(bindingResult);
     }
 }
