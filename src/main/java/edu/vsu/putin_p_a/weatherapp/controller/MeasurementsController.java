@@ -39,12 +39,7 @@ public class MeasurementsController {
 
     @ExceptionHandler
     private MeasurementValidationErrorResponse handleException(MeasurementValidationException e) {
-        StringBuilder message = new StringBuilder();
-        for (FieldError fe : e.getErrors()) {
-            message.append("Invalid value on field ").append(fe.getField())
-                    .append(": ").append(fe.getDefaultMessage()).append(";");
-        }
-        return new MeasurementValidationErrorResponse(message.toString(), LocalDateTime.now());
+        return new MeasurementValidationErrorResponse(e.formMessage(), LocalDateTime.now());
     }
 
     private Measurement convertToMeasurement(MeasurementDTO measurementDTO) {

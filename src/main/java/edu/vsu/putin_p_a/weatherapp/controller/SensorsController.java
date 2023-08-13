@@ -41,12 +41,7 @@ public class SensorsController {
 
     @ExceptionHandler
     private SensorValidationErrorResponse handleException(SensorValidationException e) {
-        StringBuilder message = new StringBuilder();
-        for (FieldError fe : e.getErrors()) {
-            message.append("Invalid value on field ").append(fe.getField())
-                    .append(": ").append(fe.getDefaultMessage()).append(";");
-        }
-        return new SensorValidationErrorResponse(message.toString(), LocalDateTime.now());
+        return new SensorValidationErrorResponse(e.formMessage(), LocalDateTime.now());
     }
 
     private Sensor convertToSensor(SensorDTO sensorDTO) {

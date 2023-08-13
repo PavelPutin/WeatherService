@@ -14,4 +14,13 @@ abstract public class ValidationException extends RuntimeException {
     public List<FieldError> getErrors() {
         return bindingResult.getFieldErrors();
     }
+
+    public String formMessage() {
+        StringBuilder message = new StringBuilder();
+        for (FieldError fe : this.getErrors()) {
+            message.append("Invalid value on field ").append(fe.getField())
+                    .append(": ").append(fe.getDefaultMessage()).append(";");
+        }
+        return message.toString();
+    }
 }
