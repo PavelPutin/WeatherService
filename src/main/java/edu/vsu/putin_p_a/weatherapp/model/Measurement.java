@@ -27,7 +27,7 @@ public class Measurement {
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime cratedAt;
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "sensor_name", referencedColumnName = "name")
@@ -57,12 +57,12 @@ public class Measurement {
         this.raining = raining;
     }
 
-    public LocalDateTime getCratedAt() {
-        return cratedAt;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCratedAt(LocalDateTime cratedAt) {
-        this.cratedAt = cratedAt;
+    public void setCreatedAt(LocalDateTime cratedAt) {
+        this.createdAt = cratedAt;
     }
 
     public Sensor getSensor() {

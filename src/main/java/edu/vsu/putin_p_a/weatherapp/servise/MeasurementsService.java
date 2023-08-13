@@ -28,7 +28,7 @@ public class MeasurementsService {
     }
 
     private void enrichMeasurement(Measurement measurement) {
-        measurement.setCratedAt(LocalDateTime.now());
+        measurement.setCreatedAt(LocalDateTime.now());
     }
 
     public int rainyDaysCount() {

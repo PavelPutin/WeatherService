@@ -1,6 +1,7 @@
 package edu.vsu.putin_p_a.weatherapp.controller;
 
 import edu.vsu.putin_p_a.weatherapp.dto.MeasurementDTO;
+import edu.vsu.putin_p_a.weatherapp.dto.MeasurementResponseDTO;
 import edu.vsu.putin_p_a.weatherapp.dto.RainyDaysDTO;
 import edu.vsu.putin_p_a.weatherapp.model.Measurement;
 import edu.vsu.putin_p_a.weatherapp.servise.MeasurementsService;
@@ -9,7 +10,6 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -40,8 +40,8 @@ public class MeasurementsController {
     }
 
     @GetMapping
-    public List<MeasurementDTO> getAll() {
-        return measurementsService.getAll().stream().map(this::convertToMeasurementDTO).toList();
+    public List<MeasurementResponseDTO> getAll() {
+        return measurementsService.getAll().stream().map(this::convertToMeasurementResponseDTO).toList();
     }
 
     @GetMapping("/rainyDaysCount")
@@ -58,7 +58,7 @@ public class MeasurementsController {
         return modelMapper.map(measurementDTO, Measurement.class);
     }
 
-    private MeasurementDTO convertToMeasurementDTO(Measurement measurement) {
-        return modelMapper.map(measurement, MeasurementDTO.class);
+    private MeasurementResponseDTO convertToMeasurementResponseDTO(Measurement measurement) {
+        return modelMapper.map(measurement, MeasurementResponseDTO.class);
     }
 }
