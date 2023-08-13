@@ -1,4 +1,4 @@
-package edu.vsu.putin_p_a.sprintrestservice.controller;
+package edu.vsu.putin_p_a.weatherapp.controller;
 
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
